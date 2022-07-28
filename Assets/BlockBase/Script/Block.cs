@@ -38,7 +38,7 @@ public abstract class Block
     }
 
     public abstract void Reset();
-    public abstract int GetNextDirection(int currentDirection);
+    public abstract int GetDirection(int directionIndex);
     public abstract int GetDirectionCount();
 
     public abstract void UpdateBlockPosition(Vector2Int baseSize);
@@ -101,9 +101,9 @@ public class BlockCube : Block
         IsVisited = false;
     }
 
-    public override int GetNextDirection(int currentDirection)
+    public override int GetDirection(int directionIndex)
     {
-        return (currentDirection + 1) % BlockConfig.DirectionCount;
+        return directionIndex % BlockConfig.DirectionCount;
     }
 
     public override int GetDirectionCount()

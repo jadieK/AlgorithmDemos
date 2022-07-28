@@ -11,7 +11,7 @@ namespace BlockBase
         public TMP_InputField WidthInput;
         public TMP_InputField HeightInput;
 
-
+        public bool generateWalls = true;
         private void Start()
         {
             WidthInput.text = "10";
@@ -24,7 +24,7 @@ namespace BlockBase
             int height = int.Parse(HeightInput.text);
             BaseMgr.Instance().DestroyBaseCube();
             BaseMgr.Instance().SetBaseSize(width, height);
-            BaseMgr.Instance().GenerateBaseCube(CubePrefab, WallPrefab);
+            BaseMgr.Instance().GenerateBaseCube(CubePrefab, WallPrefab, generateWalls);
         }
 
         private void Update()

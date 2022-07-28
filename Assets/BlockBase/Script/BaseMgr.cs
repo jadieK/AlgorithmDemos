@@ -61,7 +61,6 @@ public class BaseMgr
         }
 
         _currentSelectedBlock = _baseBlocks[x, y];
-        _currentSelectedBlock.MarkSelected();
         if (BlockSelected != null)
         {
             BlockSelected(_currentSelectedBlock);
@@ -82,7 +81,7 @@ public class BaseMgr
         _baseBlocks = null;
     }
     
-    public void GenerateBaseCube(GameObject cubePrefab, GameObject wallPrefab)
+    public void GenerateBaseCube(GameObject cubePrefab, GameObject wallPrefab, bool generateWalls)
     {
         _baseBlocks = new Block[_baseSize.x, _baseSize.y];
 
@@ -97,7 +96,7 @@ public class BaseMgr
             }
         }
 
-        for (int xIndex = 0; xIndex < _baseSize.x; xIndex++)
+        for (int xIndex = 0; generateWalls && xIndex < _baseSize.x; xIndex++)
         {
             for (int yIndex = 0; yIndex < _baseSize.y; yIndex++)
             {
